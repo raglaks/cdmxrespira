@@ -5,7 +5,7 @@ const axios = require('axios');
 const dotenv = require('dotenv');
 dotenv.config({path: '/Users/raglaks/Desktop/PROJECTS/mexres/.env'});
 
-const stations = ['Acolman', 'Nezahualcóyotl', 'Villa de las Flores', 'Cuautitlán', 'San Agustín', 'FES Acatlán', 'Gustavo A. Madero', 'Merced', 'Iztacalco', 'UAM Xochimilco', 'Tlahuac', 'Milpa Alta', 'Ajusco', 'Ajusco Medio', 'Centro de Ciencias de la Atmosfera', 'Benito Juárez', 'Pedregal', 'Miguel Hidalgo', 'Santa FE', 'Investigaciones Nucleares'];
+const stations = ['Nezahualcóyotl', 'Acolman', 'Villa de las Flores', 'Cuautitlán', 'San Agustín', 'FES Acatlán', 'Gustavo A. Madero', 'Merced', 'Iztacalco', 'UAM Xochimilco', 'Tlahuac', 'Milpa Alta', 'Ajusco', 'Ajusco Medio', 'Centro de Ciencias de la Atmosfera', 'Benito Juárez', 'Pedregal', 'Miguel Hidalgo', 'Santa FE', 'Investigaciones Nucleares'];
 
 let count = 0;
 
@@ -22,7 +22,7 @@ const T = new Twit({
 
 function goodAir(aqi, name, url) {
 
-    let string = `${name}\n💚💚💚 Índice de la Calidad de Aire: ${aqi}\nCalidad del aire: Buena\n#CDMXrespira\nhttps://aqicn.org/city/${url}`; 
+    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Buena 💚💚💚\n#CDMXrespira\nhttps://aqicn.org/city/${url}`; 
 
     tweet(string);
 
@@ -30,7 +30,7 @@ function goodAir(aqi, name, url) {
 
 function modAir(aqi, name, url) {
 
-    let string = `${name}\n🚧🚧🚧 Índice de la Calidad de Aire: ${aqi}\nCalidad del aire: Moderada\n#CDMXrespira\nhttps://aqicn.org/city/${url}`; 
+    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Moderada🚧🚧🚧\n#CDMXrespira\nhttps://aqicn.org/city/${url}`; 
 
     tweet(string);
     
@@ -38,7 +38,7 @@ function modAir(aqi, name, url) {
 
 function sensAir(aqi, name, url) {
 
-    let string = `${name}\n💊💊💊 Índice de la Calidad de Aire: ${aqi}\nCalidad del aire: Dañina a la salud de los grupos sensibles\n#CDMXrespira\nhttps://aqicn.org/city/${url}`; 
+    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Dañina a la salud de los grupos sensibles💊💊💊\n#CDMXrespira\nhttps://aqicn.org/city/${url}`; 
 
     tweet(string);
     
@@ -46,7 +46,7 @@ function sensAir(aqi, name, url) {
 
 function harmAir(aqi, name, url) {
 
-    let string = `${name}\n😟😟😟 Índice de la Calidad de Aire: ${aqi}\nCalidad del aire: Dañina a la salud\n#CDMXrespira\nhttps://aqicn.org/city/${url}`; 
+    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Dañina a la salud😟😟😟\n#CDMXrespira\nhttps://aqicn.org/city/${url}`; 
 
     tweet(string);
     
@@ -54,7 +54,7 @@ function harmAir(aqi, name, url) {
 
 function vHarmAir(aqi, name, url) {
 
-    let string = `${name}\n😷😷😷 Índice de la Calidad de Aire: ${aqi}\nCalidad del aire: Muy dañina a la salud\n#CDMXrespira\nhttps://aqicn.org/city/${url}`;
+    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Muy dañina a la salud😷😷😷\n#CDMXrespira\nhttps://aqicn.org/city/${url}`;
     
     tweet(string);
     
@@ -62,7 +62,7 @@ function vHarmAir(aqi, name, url) {
 
 function risky(aqi, name, url) {
 
-    let string = `${name}\n🚨🚨🚨 Índice de la Calidad de Aire: ${aqi}\nCalidad del aire: Peligrosa\n#CDMXrespira\nhttps://aqicn.org/city/${url}`; 
+    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Peligrosa🚨🚨🚨\n#CDMXrespira\nhttps://aqicn.org/city/${url}`; 
 
     tweet(string);
     
@@ -100,7 +100,7 @@ app.get('/tweet', (req, res) => {
 
         }
 
-    }, 10000);
+    }, 360000);
 
 
 });
