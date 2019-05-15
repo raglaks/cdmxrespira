@@ -2,6 +2,7 @@ const express = require('express');
 const Twit = require('twit');
 const port = process.env.PORT || 4000;
 const axios = require('axios');
+const moment = require('moment');
 const dotenv = require('dotenv');
 dotenv.config({path: '/Users/raglaks/Desktop/PROJECTS/mexres/.env'});
 
@@ -22,7 +23,7 @@ const T = new Twit({
 
 function goodAir(aqi, name, url) {
 
-    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Buena 💚💚💚\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
+    let string = `${name} | ${moment().format('DD-MM-YYYY, hh:mm:ss')}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Buena 💚💚💚\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
 
     tweet(string);
 
@@ -30,7 +31,7 @@ function goodAir(aqi, name, url) {
 
 function modAir(aqi, name, url) {
 
-    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Moderada 🚧🚧🚧\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
+    let string = `${name} | ${moment().format('DD-MM-YYYY, hh:mm:ss')}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Moderada 🚧🚧🚧\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
 
     tweet(string);
     
@@ -38,7 +39,7 @@ function modAir(aqi, name, url) {
 
 function sensAir(aqi, name, url) {
 
-    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Dañina a la salud de los grupos sensibles 💊💊💊\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
+    let string = `${name} | ${moment().format('DD-MM-YYYY, hh:mm:ss')}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Dañina a la salud de los grupos sensibles 💊💊💊\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
 
     tweet(string);
     
@@ -46,7 +47,7 @@ function sensAir(aqi, name, url) {
 
 function harmAir(aqi, name, url) {
 
-    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Dañina a la salud 😟😟😟\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
+    let string = `${name} | ${moment().format('DD-MM-YYYY, hh:mm:ss')}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Dañina a la salud 😟😟😟\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
 
     tweet(string);
     
@@ -54,7 +55,7 @@ function harmAir(aqi, name, url) {
 
 function vHarmAir(aqi, name, url) {
 
-    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Muy dañina a la salud 😷😷😷\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`;
+    let string = `${name} | ${moment().format('DD-MM-YYYY, hh:mm:ss')}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Muy dañina a la salud 😷😷😷\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`;
     
     tweet(string);
     
@@ -62,7 +63,7 @@ function vHarmAir(aqi, name, url) {
 
 function risky(aqi, name, url) {
 
-    let string = `${name}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Peligrosa 🚨🚨🚨\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
+    let string = `${name} | ${moment().format('DD-MM-YYYY, hh:mm:ss')}\nÍndice de la Calidad del Aire: ${aqi}\nCalidad del aire: Peligrosa 🚨🚨🚨\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
 
     tweet(string);
     
@@ -70,7 +71,7 @@ function risky(aqi, name, url) {
 
 function apiErr(name, url) {
 
-    let string = `${name}\nERROR DE API, CHEQUE EL RESULTADO EN EL LINK ABAJO 🔽🔽🔽\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
+    let string = `${name} | ${moment().format('DD-MM-YYYY, hh:mm:ss')}\nERROR DE API, CHEQUE EL RESULTADO EN EL LINK ABAJO 🔽🔽🔽\n#CDMXrespira\nhttps://aqicn.org/city/${url}/es/`; 
 
     tweet(string);
 
@@ -80,19 +81,19 @@ function tweet(string) {
 
     console.log(string);
 
-    T.post('statuses/update', { status: string }, function(err, data, response) {
+    // T.post('statuses/update', { status: string }, function(err, data, response) {
 
-        if (err) {
+    //     if (err) {
 
-            console.log(err);
+    //         console.log(err);
 
-        } else {
+    //     } else {
 
-            console.log('Success: ' + data.text);
+    //         console.log('Success: ' + data.text);
             
-        }
+    //     }
 
-    });
+    // });
 
 }
 
@@ -178,7 +179,7 @@ app.listen(port, () => {
 
         }
 
-    }, 360000);
+    }, 5000);
 
 });
 
