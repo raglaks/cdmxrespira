@@ -82,7 +82,15 @@ function tweet(string) {
 
     T.post('statuses/update', { status: string }, function(err, data, response) {
 
-        console.log("chirp");
+        if (err) {
+
+            console.log(err);
+
+        } else {
+
+            console.log('Success: ' + data.text);
+            
+        }
 
     });
 
