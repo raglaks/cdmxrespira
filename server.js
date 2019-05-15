@@ -105,7 +105,7 @@ app.get('/ping', (req, res) => {
 
 function getAQI(station) {
 
-    return axios.get(`https://api.waqi.info/search/?`, {
+    return axios.get(`http://api.waqi.info/search/?`, {
 
         params: {
             token: process.env.token,
