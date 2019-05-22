@@ -81,19 +81,19 @@ function tweet(string) {
 
     console.log(string);
 
-    // T.post('statuses/update', { status: string }, function(err, data, response) {
+    T.post('statuses/update', { status: string }, function(err, data, response) {
 
-    //     if (err) {
+        if (err) {
 
-    //         console.log(err);
+            console.log(err);
 
-    //     } else {
+        } else {
 
-    //         console.log('Success: ' + data.text);
+            console.log('Success: ' + data.text);
             
-    //     }
+        }
 
-    // });
+    });
 
 }
 
@@ -179,7 +179,7 @@ app.listen(port, () => {
 
         }
 
-    }, 3000);
+    }, 360000);
 
 });
 
