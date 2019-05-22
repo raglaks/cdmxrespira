@@ -6,7 +6,7 @@ const moment = require('moment');
 const dotenv = require('dotenv');
 dotenv.config({path: '/Users/raglaks/Desktop/PROJECTS/mexres/.env'});
 
-const stations = ['Nezahualcóyotl', 'Acolman', 'Villa de las Flores', 'Cuautitlán', 'San Agustín', 'FES Acatlán', 'Gustavo A. Madero', 'Merced', 'Iztacalco', 'UAM Xochimilco', 'Tlahuac', 'Milpa Alta', 'Ajusco', 'Ajusco Medio', 'Centro de Ciencias de la Atmosfera', 'Benito Juárez', 'Pedregal', 'Miguel Hidalgo', 'Santa Fe', 'Investigaciones Nucleares'];
+const stations = ['Nezahualcóyotl', 'UAM Iztapalapa', 'Acolman', 'Villa de las Flores', 'Cuautitlán', 'San Agustín', 'FES Acatlán', 'Gustavo A. Madero', 'Merced', 'Iztacalco', 'UAM Xochimilco', 'Tlahuac', 'Milpa Alta', 'Ajusco', 'Ajusco Medio', 'Centro de Ciencias de la Atmosfera', 'Benito Juárez', 'Pedregal', 'Miguel Hidalgo', 'Santa Fe', 'Investigaciones Nucleares'];
 
 let count = 0;
 
@@ -81,19 +81,19 @@ function tweet(string) {
 
     console.log(string);
 
-    T.post('statuses/update', { status: string }, function(err, data, response) {
+    // T.post('statuses/update', { status: string }, function(err, data, response) {
 
-        if (err) {
+    //     if (err) {
 
-            console.log(err);
+    //         console.log(err);
 
-        } else {
+    //     } else {
 
-            console.log('Success: ' + data.text);
+    //         console.log('Success: ' + data.text);
             
-        }
+    //     }
 
-    });
+    // });
 
 }
 
@@ -105,7 +105,7 @@ app.get('/ping', (req, res) => {
 
 function getAQI(station) {
 
-    return axios.get(`http://api.waqi.info/search/?`, {
+    return axios.get(`https://api.waqi.info/search/?`, {
 
         params: {
             token: process.env.token,
@@ -179,7 +179,7 @@ app.listen(port, () => {
 
         }
 
-    }, 360000);
+    }, 3000);
 
 });
 
