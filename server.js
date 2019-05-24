@@ -177,7 +177,9 @@ app.listen(port, () => {
 
         count++;
 
-        if (count === 20) {
+        console.log(count);
+
+        if (count === 19) {
 
             count = 0;
 
