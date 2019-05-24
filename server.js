@@ -6,7 +6,7 @@ const moment = require('moment');
 const dotenv = require('dotenv');
 dotenv.config({path: '/Users/raglaks/Desktop/PROJECTS/mexres/.env'});
 
-const stations = ['Nezahualcóyotl', 'UAM Iztapalapa', 'Acolman', 'Villa de las Flores', 'Cuautitlán', 'San Agustín', 'FES Acatlán', 'Gustavo A. Madero', 'Merced', 'Iztacalco', 'UAM Xochimilco', 'Tlahuac', 'Milpa Alta', 'Ajusco', 'Ajusco Medio', 'Centro de Ciencias de la Atmosfera', 'Benito Juárez', 'Pedregal', 'Miguel Hidalgo', 'Santa Fe', 'Investigaciones Nucleares'];
+const stations = ['Nezahualcóyotl', 'UAM Iztapalapa', 'Acolman', 'Villa de las Flores', 'Cuautitlán', 'San Agustín', 'FES Acatlán', 'Gustavo A. Madero', 'Merced', 'UAM Xochimilco', 'Tlahuac', 'Milpa Alta', 'Ajusco', 'Centro de Ciencias de la Atmosfera', 'Benito Juárez', 'Pedregal', 'Miguel Hidalgo', 'Santa FE', 'Investigaciones Nucleares'];
 
 let count = 0;
 
@@ -116,39 +116,43 @@ function getAQI(station) {
 
         let resArr = data.data.data;
 
-        resArr.map(el=>{
+        resArr.map((el,key)=>{
 
             if (el.station.url.includes("mexico/mexico/")) {
 
-                let aqiVal = parseInt(el.aqi);
+                if (el.station.name.includes("San Agunstín") === false) {
 
-                if (aqiVal <= 50) {
+                    let aqiVal = parseInt(el.aqi);
 
-                    goodAir(aqiVal, el.station.name, el.station.url);
+                    if (aqiVal <= 50) {
 
-                } else if (aqiVal <= 100) {
+                        goodAir(aqiVal, el.station.name, el.station.url);
 
-                    modAir(aqiVal, el.station.name, el.station.url);
+                    } else if (aqiVal <= 100) {
 
-                } else if (aqiVal <= 150) {
+                        modAir(aqiVal, el.station.name, el.station.url);
 
-                    sensAir(aqiVal, el.station.name, el.station.url);
+                    } else if (aqiVal <= 150) {
 
-                } else if (aqiVal <= 200) {
+                        sensAir(aqiVal, el.station.name, el.station.url);
 
-                    harmAir(aqiVal, el.station.name, el.station.url);
+                    } else if (aqiVal <= 200) {
 
-                } else if (aqiVal <= 300) {
+                        harmAir(aqiVal, el.station.name, el.station.url);
 
-                    vHarmAir(aqiVal, el.station.name, el.station.url);
+                    } else if (aqiVal <= 300) {
 
-                } else if (aqiVal > 300) {
+                        vHarmAir(aqiVal, el.station.name, el.station.url);
 
-                    risky(aqiVal, el.station.name, el.station.url);
+                    } else if (aqiVal > 300) {
 
-                } else {
+                        risky(aqiVal, el.station.name, el.station.url);
 
-                    apiErr(el.station.name, el.station.url)
+                    } else {
+
+                        apiErr(el.station.name, el.station.url)
+
+                    }
 
                 }
     
